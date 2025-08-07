@@ -129,10 +129,16 @@ describe('useCounter', () => {
   });
   it('should update val and increment by new val', () => {
     const { result } = renderHook(() => useCounter());
+    
     act(() => {
-    result.current.setVal(5);
-    result.current.increment();
+      result.current.setVal(5);
     });
+    
+    act(() => {
+      result.current.increment();
+    });
+    
     expect(result.current.count).toBe(5);
+    expect(result.current.val).toBe(5);
   });
 });
